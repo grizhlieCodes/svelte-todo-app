@@ -9,10 +9,6 @@
   export let tags;
   export let done; //locate this variable elsewhere
 
-
-  function taskDoneUpdate() {
-    dispatch("task-done-toggle");
-  }
 </script>
 
 <!-- in:fly={{x: 400, duration: 1000}} out:fly={{x: 500, duration: 250}} -->
@@ -29,9 +25,10 @@
       <label class="label {done ? 'status-done' : ''}" for={id} >✔</label>
     </div>
     <p class="task-info {done ? 'cross' : ''}">{task}</p>
-    <p class="date">{date}</p>
+    <i class="fas fa-trash" on:click={dispatch("delete-task", id)}></i>
   </div>
   <div class="bottom">
+    <p class="date">{date}</p>
     {#each tags as tag}
       {#if tag !== ""}
         <p class="tag">{tag}</p>
@@ -41,11 +38,16 @@
 </li>
 
 <style>
+  i:hover {
+    cursor: pointer;
+    color:rgb(255, 59, 75);
+    transition: color 250ms ease-in-out;
+  }
   li {
     list-style-type: none;
     list-style: none;
     width: 100%;
-    height: 3.5rem;
+    height: 4rem;
     /* background: black; */
     margin-bottom: 1rem;
     border-bottom: solid 1px rgb(61, 61, 61);
@@ -101,12 +103,15 @@
   .date {
     color: rgb(104, 104, 104);
     font-size: 0.8rem;
+    justify-self: start;
+    align-self: center;
   }
 
   /* BOTTOM Styling */
 
   .bottom {
     display: grid;
+    grid-template-columns: 1fr;
     grid-auto-columns: max-content;
     grid-auto-flow: column;
     padding-bottom: 0.2rem;

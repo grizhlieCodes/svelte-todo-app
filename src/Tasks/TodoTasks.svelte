@@ -40,6 +40,7 @@
         tags={task.tags}
         done={task.done}
         on:task-done-toggle
+        on:delete-task
       />
     </div>
   {/each}
@@ -59,6 +60,7 @@
         tags={task.tags}
         done={task.done} 
         on:task-done-toggle
+        on:delete-task
       />
     </div>
   {/each}

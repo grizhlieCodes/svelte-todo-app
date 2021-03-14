@@ -8,6 +8,7 @@
     let task = '';
     let date = '';
     let tag = '';
+    // let customTags = ["Coding 👨‍💻", "Home 🏡", "Family 👨‍👩‍👦", "Other ❓"]
 
     function closeModal(){
         dispatch('cancel')
@@ -30,7 +31,7 @@
         <form on:submit|preventDefault={submitForm}>
             <TextInput 
                 label="Task" 
-                id={Math.random().toString()}
+                id="task"
                 type="text" 
                 value={task} 
                 placeholder="Input your task"
@@ -38,7 +39,7 @@
             />
             <TextInput 
                 label="Date" 
-                id={Math.random().toString()}
+                id="date"
                 type="text" 
                 value={date} 
                 placeholder="Example: Mar 10"
@@ -46,7 +47,7 @@
             />
             <TextInput 
                 label="Tag" 
-                id={Math.random().toString()}
+                id="tags"
                 type="text" 
                 value={tag} 
                 placeholder="Input your tags, seperate 2 spaces"
