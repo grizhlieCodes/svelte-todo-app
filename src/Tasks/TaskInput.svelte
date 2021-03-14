@@ -4,10 +4,12 @@
     import Button from '../UI/Button.svelte';
     import Modal from '../UI/Modal.svelte';
     import TextInput from '../UI/TextInput.svelte';
-
     let task = '';
-    let date = '';
-    let tag = '';
+
+    $: taskValid = task
+
+    let date = 'Today';
+    let tag = 'Coding 👨‍💻  Personal 🛀';
     // let customTags = ["Coding 👨‍💻", "Home 🏡", "Family 👨‍👩‍👦", "Other ❓"]
 
     function closeModal(){
@@ -55,8 +57,15 @@
             />
         </form>
         <div slot="footer">
-            <Button type="button" content="Close" on:click={closeModal}/>
-            <Button type="button" content="Add Task" on:click={submitForm} />
+            <Button 
+            type="button" 
+            content="Close" 
+            on:click={closeModal}/>
+            <Button 
+            type="button" 
+            content="Add Task" 
+            on:click={submitForm} 
+            disabled={!taskValid} />
         </div>
     </Modal>
 

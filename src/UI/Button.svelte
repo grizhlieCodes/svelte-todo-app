@@ -2,9 +2,10 @@
     export let type;
     export let content;
     export let specialClass = '';
+    export let disabled = false;
 </script>
 
-<button class={specialClass} type={type} on:click>{content}</button>
+<button class={specialClass} type={type} on:click {disabled}>{content}</button>
 
 <style>
     button {
