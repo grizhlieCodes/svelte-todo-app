@@ -30,7 +30,7 @@
   {#each tasks.filter((t) => !t.done) as task(task.id)}
     <div 
     class="task-container" 
-    animate:flip
+    animate:flip={{duration: 200}}
     in:receive="{{key: task.id}}"
     out:send="{{key: task.id}}">
       <Task
@@ -50,7 +50,7 @@
   {#each tasks.filter((t) => t.done) as task(task.id)}
     <div 
     class="task-container" 
-    animate:flip
+    animate:flip={{duration: 200}}
     in:receive="{{key: task.id}}"
     out:send="{{key: task.id}}" >
       <Task

@@ -4,6 +4,7 @@
     import Button from '../UI/Button.svelte';
     import Modal from '../UI/Modal.svelte';
     import TextInput from '../UI/TextInput.svelte';
+    import {fade} from 'svelte/transition'
     let task = '';
 
     $: taskValid = task
