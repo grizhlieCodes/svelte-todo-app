@@ -1,13 +1,19 @@
 import { writable } from 'svelte/store'
 
-
-
 const allTasks = writable([])
 
-function parseTasks(){
-    allTasks.update(tasks => {
-        return JSON.parse(localStorage.getItem('tasks'))
-    })
+function parseTasks() {
+    if(localStorage.getItem('tasks')){
+        if (JSON.parse(localStorage.getItem('tasks')).length == 0) {
+            return
+        } else {
+            allTasks.update(tasks => {
+                return JSON.parse(localStorage.getItem('tasks'))
+            })
+        }
+    } else {
+        return
+    }
 }
 
 window.onload = parseTasks()
@@ -23,6 +29,11 @@ const customTasks = {
             localStorage.setItem('tasks', JSON.stringify(updatedTasks))
             return updatedTasks
         })
+
+        allTasks.update(tasks => {
+            let parsedTasks = JSON.parse(localStorage.getItem('tasks'))
+            return parsedTasks
+        })
     },
 
     updateDoneTasks: (id) => {
@@ -34,6 +45,11 @@ const customTasks = {
             updatedTasks[taskIndex] = updatedTask
             localStorage.setItem('tasks', JSON.stringify(updatedTasks))
             return updatedTasks
+        })
+
+        allTasks.update(tasks => {
+            let parsedTasks = JSON.parse(localStorage.getItem('tasks'))
+            return parsedTasks
         })
     },
 
