@@ -62,6 +62,7 @@
             type="button" 
             content="Close" 
             on:click={closeModal}/>
+            
             <Button 
             type="button" 
             content="Add Task" 
